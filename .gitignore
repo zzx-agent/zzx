@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/zzx
+zzx.so
+zzx.dylib
+zzx.dll
+libzzx.a
+zzx.a
+zzx.lib
+zzx-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
