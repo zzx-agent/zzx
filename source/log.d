@@ -28,7 +28,7 @@ void info(string msg) {
 
 pragma(inline, true)
 void verbose(string msg) {
-  writefln("\033[1m|\033[0m %s", msg);
+  writefln("\033[1m|\033[0m \033[2m%s\033[2m", msg);
 }
 
 void panic(string msg) {

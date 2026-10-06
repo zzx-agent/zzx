@@ -1,4 +1,4 @@
-module key;
+module config.key;
 import log;
 
 class ApiKey {

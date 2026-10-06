@@ -2,9 +2,10 @@ module chat.loop;
 
 import intuit;
 import std.stdio : writeln;
-import key;
+import config.key;
 import log;
 import chat.tools;
+import chat.loop.custom_tools;
 
 void start() {
   auto or_key = new ApiKey("OPENROUTER_KEY");
@@ -14,14 +15,16 @@ void start() {
     or_key.get()
   );
 
+  ep.tools.add!shellCmd();
   ep.tools.add!endConversation();
   ep.tools.add!readFile();
+  ep.tools.add!listCustomTools();
 
   auto ctx = new Context();
 
   bool calledTool = false;
 
-  while (true) {
+  while (true) { try {
     if (!calledTool) ctx.user(log.input());
 
     calledTool = false;
@@ -45,5 +48,7 @@ void start() {
       log.ok("Called " ~ call.name);
       calledTool = true;
     }
-  }
+  } catch (Exception e) {
+    log.error(e.msg);
+  } }
 }
